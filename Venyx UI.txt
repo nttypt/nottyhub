@@ -15,50 +15,19 @@ TextColor = Color3.fromRGB(255, 255, 255)
 }
 
 -- first page
-local page = venyx:addPage("Test", 5012544693)
-local section1 = page:addSection("Section 1")
-local section2 = page:addSection("Section 2")
+local page = venyx:addPage("Aiming", 5012544693)
+local section1 = page:addSection("Aimbot")
 
-section1:addToggle("Toggle", nil, function(value)
+section1:addToggle("Enabled", nil, function(value)
 print("Toggled", value)
 end)
-section1:addButton("Button", function()
-print("Clicked")
-end)
-section1:addTextbox("Notification", "Default", function(value, focusLost)
-print("Input", value)
-
-if focusLost then
-venyx:Notify("Title", value)
-end
-end)
-
-section2:addKeybind("Toggle Keybind", Enum.KeyCode.One, function()
+section1:addKeybind("Toggle Keybind", Enum.KeyCode.One, function()
 print("Activated Keybind")
 venyx:toggle()
 end, function()
 print("Changed Keybind")
 end)
-section2:addColorPicker("ColorPicker", Color3.fromRGB(50, 50, 50))
-section2:addColorPicker("ColorPicker2")
-section2:addSlider("Slider", 0, -100, 100, function(value)
-print("Dragged", value)
-end)
-section2:addDropdown("Dropdown", {"Hello", "World", "Hello World", "Word", 1, 2, 3})
-section2:addDropdown("Dropdown", {"Hello", "World", "Hello World", "Word", 1, 2, 3}, function(text)
-   print("Selected", text)
-end)
-section2:addButton("Button")
 
--- second page
-local theme = venyx:addPage("Theme", 5012544693)
-local colors = theme:addSection("Colors")
-
-for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
-colors:addColorPicker(theme, color, function(color3)
-venyx:setTheme(theme, color3)
-end)
-end
 library:setTheme("Glow", Color3.fromRGB(168, 106, 255))
 library:setTheme("TextColor", Color3.fromRGB(168, 106, 255))
 -- load
